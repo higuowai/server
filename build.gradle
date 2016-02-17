@@ -15,7 +15,7 @@ subprojects {
 
     apply plugin: 'java'
 
-    archivesBaseName = 'higuowai'
+    archivesBaseName = 'server'
 
     // all sub projects ext variables
     ext {
