@@ -1,0 +1,3 @@
+rootProject.name = 'higuowai'
+
+include "core", "user"
