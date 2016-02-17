@@ -35,8 +35,8 @@ subprojects {
         sharedManifest = manifest {
             attributes 'Implementation-Title': "${project.name}",
                     'Implementation-Version': "${version}",
-                    'Implementation-Vendor': 'Shanghai Yedao Technology',
-                    'Built-By': 'Mode',
+                    'Implementation-Vendor': 'Shanghai Higuowai Technology',
+                    'Built-By': 'Higuowai.com',
                     'Built-Date': new Date().getDateTimeString(),
                     'Built-With': "gradle-${project.getGradle().getGradleVersion()}, groovy-${GroovySystem.getVersion()}",
                     'Created-By': 'Java ' + System.getProperty('java.version') + ' (' + System.getProperty('java.vendor') + ')'

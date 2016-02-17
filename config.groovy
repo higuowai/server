@@ -12,7 +12,7 @@ environments {
         jdbc {
             url = 'jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8'
             username = 'root'
-            password = 'Oracle12c'
+            password = 'xxxxxx'
             maxActive = '10'
             initialSize = '5'
         }
