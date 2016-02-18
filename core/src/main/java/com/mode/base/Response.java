@@ -7,8 +7,8 @@ import java.util.Map;
  * requests. Please don't change this class, as it will impact the mobile
  * clients which will require users to upgrade the client app.
  * <p/>
- * The response object consists of the return code and message, and the payload which is a <K, V>
- * map. For different API calls, the payload may differ.
+ * The response object consists of the return code and message, and the payload. For different
+ * API calls, the payload may differ.
  *
  * @author chao
  */
@@ -16,7 +16,7 @@ public class Response {
 
     private int code;
     private String message;
-    private Map<String, ?> payload;
+    private Object payload;
 
     public int getCode() {
         return code;
@@ -34,11 +34,11 @@ public class Response {
         this.message = message;
     }
 
-    public Map<String, ?> getPayload() {
+    public Object getPayload() {
         return payload;
     }
 
-    public void setPayload(Map<String, ?> payload) {
+    public void setPayload(Object payload) {
         this.payload = payload;
     }
 }

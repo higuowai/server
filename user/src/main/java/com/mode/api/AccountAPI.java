@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mode.base.BaseConfig;
 import com.mode.base.Response;
 import com.mode.base.ServiceException;
+import com.mode.domain.Account;
 import com.mode.domain.Profile;
 import com.mode.service.AccountService;
 
@@ -31,6 +32,7 @@ public class AccountAPI {
 
     /**
      * Sign up via login and password. Here login could be either email or mobile.
+     *
      * @param login
      * @param password
      * @param profile
@@ -42,9 +44,11 @@ public class AccountAPI {
                            @RequestBody Profile profile) {
         Response res = new Response();
         try {
-            accountService.createAccount(login, password, BaseConfig.ROLE_USER, profile);
+            final String accessToken = accountService.createAccount(login, password, BaseConfig
+                            .ROLE_USER, profile);
             res.setCode(BaseConfig.OPERATION_SUCCEEDED);
             res.setMessage(BaseConfig.SUCCESSFUL_MESSAGE);
+            res.setPayload(accessToken);
         } catch (ServiceException e) {
             res.setCode(BaseConfig.OPERATION_FAILED);
             res.setMessage(e.getMessage());
@@ -61,16 +65,14 @@ public class AccountAPI {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Response login(@RequestHeader("login") String login,
-                                 @RequestHeader("password") String password) {
+                          @RequestHeader("password") String password) {
 
         Response res = new Response();
         try {
             final String accessToken = accountService.login(login, password);
             res.setCode(BaseConfig.OPERATION_SUCCEEDED);
             res.setMessage(BaseConfig.SUCCESSFUL_MESSAGE);
-            Map<String, Object> payload = new HashMap<String, Object>();
-            payload.put("AccessToken", accessToken);
-            res.setPayload(payload);
+            res.setPayload(accessToken);
         } catch (AuthenticationException e) {
             res.setCode(BaseConfig.OPERATION_FAILED);
             res.setMessage(e.getMessage());

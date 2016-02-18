@@ -12,8 +12,8 @@
 -- -----------------------------------------------------
 -- Schema demo
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `demo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8_general_ci ;
-USE `demo` ;
+CREATE SCHEMA IF NOT EXISTS `demo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `demo`;
 
 -- -----------------------------------------------------
 -- Table `demo`.`h$account`
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `h$profile` (
   PRIMARY KEY (`user_id`),
   CONSTRAINT `profile_user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `account` (`id`)
+    REFERENCES `h$account` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

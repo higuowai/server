@@ -37,9 +37,9 @@ public class AccountService {
      * @param login
      * @param password
      * @param profile
-     * @return
+     * @return access token
      */
-    public void createAccount(String login, String password, String role, Profile profile)
+    public String createAccount(String login, String password, String role, Profile profile)
             throws ServiceException {
 
         /* Check if this account already exists. */
@@ -70,6 +70,8 @@ public class AccountService {
             throw new ServiceException("An internal error happened while creating your " +
                     "account.");
         }
+
+        return ret.getAccessToken();
     }
 
     /**
