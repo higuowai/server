@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `demo`.`profile`
+-- Table `demo`.`h$profile`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `h$profile` (
   `user_id` INT(10) NOT NULL COMMENT 'The unique user identifier.',
@@ -53,7 +53,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `demo`.`config`
+-- Table `demo`.`h$config`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `h$config` (
   `id` INT(10) NOT NULL AUTO_INCREMENT,

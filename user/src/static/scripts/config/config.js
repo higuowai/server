@@ -1,30 +1,41 @@
+/**
+ * Declare constants here.
+ */
+var API_URI_ENDPOINT = "http://localhost:8080/server-1.0-user";
 
-function config($stateProvider, $urlRouterProvider,$httpProvider) {
-    
-    $httpProvider.interceptors.push('errorInterceptor');
-    
-    $urlRouterProvider.otherwise("/home/get");
+/**
+ * Configure the views and routes based on the UI Router, so that you can change the parts of
+ * your site using your routing even if the URL does not change.
+ * @param $stateProvider
+ * @param $urlRouterProvider
+ * @param $httpProvider
+ */
+function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
+
+    /**
+     * In case of any API call returns 401 we have to redirect user to login page.
+     */
+    $httpProvider.interceptors.push('httpInterceptor');
+
+    /**
+     * Default all visits to the home page.
+     */
+    $urlRouterProvider.otherwise("home");
+
     $stateProvider
         .state('login', {
             url: "/login",
             templateUrl: "views/login.html",
         })
         .state('home', {
-            abstract: true,
             url: "/home",
             templateUrl: "views/common/content.html",
-        })
-        .state('home.get', {
-            url: "/get",
-            templateUrl: "views/get.html",
-            data: { pageTitle: 'Example view' }
-        })
-        .state('home.post', {
-            url: "/post",
-            templateUrl: "views/post.html",
-            data: { pageTitle: 'Example view' }
-        })
+        });
 }
 
-app = angular.module('demo');
-app.config(config);
+/**
+ * Once the module is registered using the angular.module('app', []); setter, we can get its
+ * instance using the angular.module('app'); getter syntax.
+ */
+angular.module('modeApp')
+    .config(routeConfig);

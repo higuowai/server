@@ -1,8 +1,5 @@
 package com.mode.api;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.naming.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mode.base.BaseConfig;
 import com.mode.base.Response;
 import com.mode.base.ServiceException;
-import com.mode.domain.Account;
 import com.mode.domain.Profile;
 import com.mode.service.AccountService;
 
@@ -44,8 +40,8 @@ public class AccountAPI {
                            @RequestBody Profile profile) {
         Response res = new Response();
         try {
-            final String accessToken = accountService.createAccount(login, password, BaseConfig
-                            .ROLE_USER, profile);
+            final String accessToken = accountService.createAccount(login, password,
+                    BaseConfig.ROLE_USER, profile);
             res.setCode(BaseConfig.OPERATION_SUCCEEDED);
             res.setMessage(BaseConfig.SUCCESSFUL_MESSAGE);
             res.setPayload(accessToken);

@@ -1,25 +1,27 @@
-<toaster-container></toaster-container>
-<div class="middle-box text-center loginscreen  animated fadeInDown" style="padding-top:10%;" >
+<div class="text-center" style="margin-top:15%">
     <div ng-controller="LoginCtrl">
-        <div style="height:20px;"></div>
-        <form class="m-t" style="width:30%;margin-left:35%">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="username" required=""
-                       ng-model="loginName">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
+                <form class="m-t">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email or Mobile"
+                               required="" ng-model="login">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password"
+                               required="" ng-model="password">
+                    </div>
+                    <div class="" style="text-align:left;margin-bottom:20px;">
+                        <input type="checkbox" checked="checked" ng-model="remember"/>
+                        <span class="">Remember Me</span>
+                    </div>
+                    <div class="form-group">
+                        <button ng-click="doLogin()"
+                                class="form-control btn btn-info block full-width m-b">Login
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="password" required=""
-                       ng-model="loginPassword">
-            </div>
-            <div class="login_remember_name" style="text-align:left;margin-bottom:20px;">
-                <input type="checkbox" checked="checked" class="" name="color"
-                       id="checkbox"/>
-                <span class="">RememberMe</span>
-            </div>
-            <button ng-click="loginAction()" class="btn btn-primary block full-width m-b" style="background-color:#00c4d8;border-color:#00c4d8">Login
-            </button>
-        </form>
-        <p class="m-t">
-        </p>
+        </div>
     </div>
 </div>
