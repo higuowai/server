@@ -6,26 +6,27 @@
  * @returns {Function}
  */
 function httpInterceptor($q, $location) {
-    return function (promise) {
-
-        var success = function (response) {
+    return {
+        response: function (response) {
+            // do something on success
+            if (response.headers()['content-type'] === "application/json; charset=utf-8") {
+                // Validate response, if not ok reject
+                if (response.data.code !== 0) {
+                    alert(response.data);
+                    return $q.reject(response); // Wrong response data
+                }
+            }
             return response;
-        };
-
-        var error = function (response) {
-            // Unauthorized API calls
+        },
+        responseError: function (response) {
+            // do something on error
             if (response.status === 401) {
+                // Unauthorized API calls, redirect to login page
+                alert(response.data);
                 $location.path('/login');
             }
-            // Wrong response data
-            if (response.data.code) {
-                console.log(response.data.message);
-            }
-
             return $q.reject(response);
-        };
-
-        return promise.then(success, error);
+        }
     };
 }
 
@@ -37,11 +38,11 @@ function httpInterceptor($q, $location) {
  */
 function apiService($http) {
     return {
-        init: function (token) {
+        login: function (token) {
             $http.defaults.headers.common['X-Access-Token'] = token;
         },
-        off: function () {
-            $http.defaults.headers.common['X-Access-Token'] = "";
+        logout: function () {
+            delete $http.defaults.headers.common['X-Access-Token'];
         },
         getData: function (data) {
             return $http(data);

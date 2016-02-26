@@ -30,6 +30,10 @@ function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
         .state('home', {
             url: "/home",
             templateUrl: "views/common/content.html",
+        })
+        .state('profile', {
+            url: "/profile",
+            templateUrl: "views/common/content.html",
         });
 }
 

@@ -21,6 +21,21 @@ public class ProfileAPI {
     private ProfileDAO profileDAO;
 
     @RequestMapping(value = "/me", method = RequestMethod.GET)
+    public Response me(@AuthenticationPrincipal AuthenticatedUser user) {
+        Response res = new Response();
+        if (user == null) {
+            res.setCode(BaseConfig.OPERATION_FAILED);
+            res.setMessage("User Not Logged In.");
+        } else {
+            // Successful
+            res.setCode(BaseConfig.OPERATION_SUCCEEDED);
+            res.setMessage(BaseConfig.SUCCESSFUL_MESSAGE);
+            res.setPayload(profileDAO.getProfile(user.getUserId()));
+        }
+        return res;
+    }
+
+    @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public Response getProfile(@AuthenticationPrincipal AuthenticatedUser user) {
         Response res = new Response();
         if (user == null) {
