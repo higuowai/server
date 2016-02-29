@@ -50,8 +50,8 @@ subprojects {
 
     // Settings for the compile task
     tasks.withType(JavaCompile) {
-        sourceCompatibility = '1.8'
-        targetCompatibility = '1.8'
+        sourceCompatibility = '1.7'
+        targetCompatibility = '1.7'
         options.encoding = 'UTF-8'
         options.debug = true
         options.compilerArgs << "-Xlint:unchecked"

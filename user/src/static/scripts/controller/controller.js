@@ -23,9 +23,8 @@ function LoginCtrl($scope, $cookies, $state, apiService) {
             if ($scope.remember) {
                 $cookies.put("X-Access-Token", token);
             }
-            // supply that token as HTTP header parameter to all API calls that client issues.
-            apiService.login(token);
 
+            // redirect user to home page
             $state.go("home")
         });
     };
@@ -37,7 +36,6 @@ function LoginCtrl($scope, $cookies, $state, apiService) {
 function LogoutCtrl($scope, $cookies, $state, apiService) {
     $scope.logout = function () {
         $cookies.remove("X-Access-Token");
-        apiService.logout();
         $state.go("home");
     };
 }

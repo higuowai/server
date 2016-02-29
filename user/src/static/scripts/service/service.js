@@ -5,16 +5,23 @@
  * @param $location
  * @returns {Function}
  */
-function httpInterceptor($q, $location) {
+function httpInterceptor($q, $location, $cookies) {
     return {
+        request: function (request) {
+            // do something on success
+            if ($cookies.get("X-Access-Token")) {
+                // if user logged in, supply that token as HTTP header parameter to all API
+                // calls that client issues.
+                request.headers['X-Access-Token'] = $cookies.get("X-Access-Token");
+            }
+            return request;
+        },
         response: function (response) {
             // do something on success
-            if (response.headers()['content-type'] === "application/json; charset=utf-8") {
+            if (response.data.code) {
                 // Validate response, if not ok reject
-                if (response.data.code !== 0) {
-                    alert(response.data);
-                    return $q.reject(response); // Wrong response data
-                }
+                alert(response.data);
+                return $q.reject(response); // Wrong response data
             }
             return response;
         },
@@ -38,12 +45,6 @@ function httpInterceptor($q, $location) {
  */
 function apiService($http) {
     return {
-        login: function (token) {
-            $http.defaults.headers.common['X-Access-Token'] = token;
-        },
-        logout: function () {
-            delete $http.defaults.headers.common['X-Access-Token'];
-        },
         getData: function (data) {
             return $http(data);
         }

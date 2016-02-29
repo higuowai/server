@@ -11,8 +11,8 @@ environments {
     prod {
         jdbc {
             url = 'jdbc:mysql://127.0.0.1:3306/demo?useUnicode=true&characterEncoding=utf-8'
-            username = 'root'
-            password = 'xxxxxx'
+            username = 'higuowai'
+            password = 'chao.huang@yahoo.com'
             maxActive = '10'
             initialSize = '5'
         }
