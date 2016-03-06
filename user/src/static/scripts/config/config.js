@@ -20,20 +20,24 @@ function routeConfig($stateProvider, $urlRouterProvider, $httpProvider) {
     /**
      * Default all visits to the home page.
      */
-    $urlRouterProvider.otherwise("home");
+    $urlRouterProvider.otherwise("/home");
 
     $stateProvider
         .state('login', {
             url: "/login",
             templateUrl: "views/login.html",
         })
-        .state('home', {
-            url: "/home",
+        .state('index', {
+            url: "/index",
             templateUrl: "views/common/content.html",
+        })
+        .state('index.home', {
+            url: "/home",
+            templateUrl: "views/home/home.html",
         })
         .state('profile', {
             url: "/profile",
-            templateUrl: "views/common/content.html",
+            templateUrl: "views/home/home.html",
         });
 }
 
