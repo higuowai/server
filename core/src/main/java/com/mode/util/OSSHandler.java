@@ -21,8 +21,8 @@ public class OSSHandler {
     private static final String BUCKET_NAME = "higuowai";
     private static final String DEFAULT_IMAGE_FOLDER = "images";
     private static final String OSS_INTERNAL_ENDPOINT = "higuowai.oss-cn-qingdao-internal.aliyuncs.com";
-    private static final String ACCESSKEY_ID = "Vn9EVmPefVX2dNso";
-    private static final String ACCESSKEY_SECRET = "aPY4Re37seDMZom4SkdmqxcDiHAd3z";
+    private static final String ACCESSKEY_ID = "";
+    private static final String ACCESSKEY_SECRET = "";
 
     /* Initialize OSSClient */
     private static final OSSClient client = new OSSClient(OSS_INTERNAL_ENDPOINT, ACCESSKEY_ID,
